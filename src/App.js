@@ -1,14 +1,37 @@
 import React, { Component, useState } from 'react';
 import './App.css';
 import { HomeTwoTone } from '@ant-design/icons';
-import { Input, Layout, Menu, Avatar,Typography } from 'antd';
+import { Input, Layout, Menu, Avatar, Typography } from 'antd';
 import flag from './assets/flag.png'
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 const { SubMenu } = Menu;
 const { Header, Footer, Sider, Content } = Layout;
 const { Search } = Input;
-const { Text,Title } = Typography;
+const { Text, Title } = Typography;
+
 
 function App() {
+
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
 
   const [state, setState] = useState({
     current: 'mail'
@@ -23,13 +46,13 @@ function App() {
   return (
     <Layout style={{ height: "100vh" }}>
       <Header style={{ backgroundColor: "white", height: "75px", display: 'flex', alignItems: "center", justifyContent: "space-between" }}>
-      <Title level={2}>News App</Title>
-        <div style={{display:'flex',flexDirection:'column',justifyContent:"center",alignItems:"center"}}>
-        <Avatar size="large" icon="user" src={flag} shape="square" style={{ width: "80px",height:"40px",marginTop:'30px' }} />
-        <Text  type="secondary" style={{marginTop:"-25px"}}>Nov 7,2020</Text>
+        <Title level={2}>News App</Title>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: "center", alignItems: "center" }}>
+          <Avatar size="large" icon="user" src={flag} shape="square" style={{ width: "80px", height: "40px", marginTop: '30px' }} />
+          <Text type="secondary" style={{ marginTop: "-25px" }}>Nov 7,2020</Text>
         </div>
         <Search
-          placeholder="input search text"
+          placeholder="සොයන්න"
           onSearch={value => console.log(value)}
           style={{ width: 200 }}
         />
@@ -70,7 +93,14 @@ function App() {
         </Menu>
 
       </Header>
-      <Content style={{ backgroundColor: 'white' }}></Content>
+      <Content style={{ backgroundColor: 'white' }}>
+        <Carousel responsive={responsive} autoPlay={true}>
+          <div>Item 1</div>
+          <div>Item 2</div>
+          <div>Item 3</div>
+          <div>Item 4</div>
+        </Carousel>;
+      </Content>
       <Footer style={{ backgroundColor: 'white' }}>Footer</Footer>
     </Layout>
   );

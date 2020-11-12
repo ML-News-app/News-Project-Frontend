@@ -1,19 +1,32 @@
 import React, { useState } from 'react'
-import { HomeTwoTone, EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Input, Layout, Menu, Avatar, Typography, Card, Divider, Rate, Button } from 'antd';
-import { Row, Col } from 'antd';
-import flag from '../../assets/flag.png'
+import { Layout, Typography } from 'antd';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import MainNewsCard from '../Layout/MainNewsCard';
 import Navbar from '../Layout/Navbar';
-const { SubMenu } = Menu;
-const { Header, Footer, Sider, Content } = Layout;
-const { Search } = Input;
-const { Text, Title } = Typography;
-const { Meta } = Card;
+const { Footer, Content } = Layout;
+const { Title } = Typography;
+
 
 function Home(props) {
+
+    const [state, setstate] = useState({
+        HotNews: [
+            { id: 1, title: 'Hello', description: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ' },
+            { id: 2, title: 'Hello1', description: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ' },
+            { id: 3, title: 'Hello2', description: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ' },
+            { id: 4, title: 'Hello3', description: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ' },
+            { id: 5, title: 'Hello4', description: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ' }
+        ],
+        RecommendedNews:[
+            { id: 1, title: 'Hello', description: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ' },
+            { id: 2, title: 'Hello1', description: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ' },
+            { id: 3, title: 'Hello2', description: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ' },
+            { id: 4, title: 'Hello3', description: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ' },
+            { id: 5, title: 'Hello4', description: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ' }
+        ]
+    })
+
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -34,27 +47,27 @@ function Home(props) {
         }
     };
 
+
     return (
         <Layout style={{ minHeight: "100vh" }}>
             <Navbar />
+
             <Content style={{ backgroundColor: 'white' }}>
                 <Title style={{ margin: '20px 0px 20px 30px' }} level={5}>News Title</Title>
-
-                <Carousel responsive={responsive} autoPlay={true} >
-                    <div><MainNewsCard /></div>
-                    <div><MainNewsCard /></div>
-                    <div><MainNewsCard /></div>
-                    <div><MainNewsCard /></div>
-                    <div><MainNewsCard /></div>
+                <Carousel responsive={responsive} autoPlay={true}>
+                    {
+                        state.HotNews.map(i => {
+                            return <MainNewsCard key={i.id} newsData={i} />
+                        })
+                    }
                 </Carousel>
                 <Title style={{ margin: '20px 0px 20px 30px' }} level={5}>News Title</Title>
-
                 <Carousel responsive={responsive} autoPlay={true} >
-                    <div><MainNewsCard /></div>
-                    <div><MainNewsCard /></div>
-                    <div><MainNewsCard /></div>
-                    <div><MainNewsCard /></div>
-                    <div><MainNewsCard /></div>
+                {
+                        state.RecommendedNews.map(i => {
+                            return <MainNewsCard key={i.id} newsData={i}/>
+                        })
+                    }
                 </Carousel>
             </Content>
             <Footer style={{ backgroundColor: 'white' }}>Footer</Footer>

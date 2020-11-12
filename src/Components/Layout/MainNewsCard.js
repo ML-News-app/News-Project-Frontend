@@ -5,8 +5,8 @@ import flag from '../../assets/flag.png'
 const { Meta } = Card;
 
 function MainNewsCard(props) {
+    console.log(props.newsData)
     return (
-       
             <Card
               hoverable={true}
                 style={{ width: 300,borderColor:"red",
@@ -26,11 +26,10 @@ function MainNewsCard(props) {
                 ]}
               >
                 <Meta
-                  title="Card title"
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec ante mattis, egestas dolor condimentum, eleifend mi. V"
+                  title={props.newsData.title}
+                  description={props.newsData.description}
                 />
               </Card>
-       
     )
 }
 

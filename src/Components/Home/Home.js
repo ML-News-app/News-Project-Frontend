@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Layout, Typography } from 'antd';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import MainNewsCard from '../Layout/MainNewsCard';
 import Navbar from '../Layout/Navbar';
+import axios from 'axios';
+
 const { Footer, Content } = Layout;
 const { Title } = Typography;
 
@@ -26,6 +28,23 @@ function Home(props) {
             { news_id: 5, title: 'Hello', summerized_article: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ',body:''},
         ]
     })
+    
+    useEffect(() => {
+        axios.get('http://localhost:8080/api/v1/testnews')
+        .then(response => {
+            setstate({
+                HotNews: response.data,
+                RecommendedNews:[
+                    { news_id: 1, title: 'Hello', summerized_article: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ',body:''},
+                    { news_id: 2, title: 'Hello', summerized_article: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ',body:''},
+                    { news_id: 3, title: 'Hello', summerized_article: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ',body:''},
+                    { news_id: 4, title: 'Hello', summerized_article: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ',body:''},
+                    { news_id: 5, title: 'Hello', summerized_article: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ',body:''},
+                ]
+            })
+            console.log(response.data)
+        })
+    },[])
 
     const responsive = {
         superLargeDesktop: {
@@ -48,6 +67,8 @@ function Home(props) {
     };
 
 
+
+
     return (
         <Layout style={{ minHeight: "100vh" }}>
             <Navbar />
@@ -57,14 +78,14 @@ function Home(props) {
                 <Carousel responsive={responsive} autoPlay={true}>
                     {
                         state.HotNews && state.HotNews.map(i => {
-                            const maxLength=120
-                            let summary;
-                            if(i.summerized_article.length >= maxLength) {
+                            const maxLength=100
+                            let summary = i.summerized_article;
+                            /* if(i.summerized_article.length >= maxLength) {
                                 summary = i.summerized_article.substr(0,maxLength).concat('...')
                             }else{
                                 summary = i.summerized_article
-                            }
-                            return <MainNewsCard key={i.id} summary={summary} newsData={i} />
+                            } */
+                            return <MainNewsCard key={i.id} summary={summary.substr(0,maxLength).concat('...')} newsData={i} />
                         })
                     }
                 </Carousel>
@@ -72,14 +93,14 @@ function Home(props) {
                 <Carousel responsive={responsive} autoPlay={true} >
                 {
                         state.RecommendedNews && state.HotNews.map(i => {
-                            const maxLength=120
-                            let summary;
-                            if(i.summerized_article.length >= maxLength) {
+                            const maxLength=100
+                            let summary = i.summerized_article;
+                            /* if(i.summerized_article.length >= maxLength) {
                                 summary = i.summerized_article.substr(0,maxLength).concat('...')
                             }else{
                                 summary = i.summerized_article
-                            }
-                            return <MainNewsCard key={i.id} summary={summary} newsData={i} />
+                            } */
+                            return <MainNewsCard key={i.id} summary={summary.substr(0,maxLength).concat('...')} newsData={i} />
                         })
                     }
                 </Carousel>

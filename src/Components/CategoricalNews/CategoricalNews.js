@@ -15,7 +15,7 @@ function CategoricalNews(props) {
     const [state, setState] = useState({
         numEachPage: 6,
         minValue: 0,
-        maxValue: 8
+        maxValue: 6
     })
 
     function handleChange(value) {

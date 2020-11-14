@@ -23,8 +23,8 @@ function Navbar(props) {
     }
 
     const handleClick = e => {
-        console.log('click ', e);
-        if(location.pathname.substr(0,9)=='/category'){
+        
+        if(location.pathname.substr(0,9)==='/category'){
             history.replace(e.key);
         }else{
             history.replace(`category/${e.key}`);

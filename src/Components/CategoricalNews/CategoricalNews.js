@@ -3,6 +3,7 @@ import Navbar from '../Layout/Navbar'
 import { Layout, Typography, Row, Col, Pagination, List } from 'antd';
 import { useParams } from "react-router-dom";
 import SecondaryNewsCard from '../Layout/SecondaryNewsCard';
+import axios from 'axios';
 const { Footer, Content } = Layout;
 const { Title } = Typography;
 
@@ -27,18 +28,7 @@ function CategoricalNews(props) {
     }
 
     const [news, setNews] = useState({
-        NewsList: [
-            { news_id: 1, title: 'Hello', summerized_article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac diam vel leo gravida tincidunt. Nulla placerat sapien eros, sit amet commodo nisl accumsan ac. Nunc enim velit, ullamcorper ultrices efficitur id, eleifend a erat. Sed varius scelerisque sem quis facilisis. Praesent ac ultricies lorem. Nam pellentesque metus accumsan risus sagittis euismod. Integer ac tincidunt urna. Aliquam metus velit, tempus id varius molestie, consequat sed ex. Suspendisse sit amet facilisis urna. Suspendisse eget nisi vel quam ultricies scelerisque sed a augue. Fusce tincidunt sapien at diam sagittis tincidunt. Proin vitae eros id velit viverra varius a eget mi. Nam rhoncus erat eget luctus sodales. In hac habitasse platea dictumst.Etiam sed eros blandit, volutpat magna eget, tincidunt urna. Donec mattis vel ipsum in tristique. Phasellus laoreet rhoncus commodo. Curabitur porta, lectus non ultrices maximus, diam augue semper diam, quis aliquam ante sapien ac felis. Phasellus accumsan libero nisi, ut pharetra lectus iaculis maximus. Nullam facilisis suscipit porttitor. Suspendisse euismod vel justo nec mollis. Praesent enim massa, varius gravida ex id, congue pretium est. Aliquam et porttitor diam. Vivamus dapibus arcu vitae iaculis imperdiet. Vestibulum egestas facilisis hendrerit. Cras eleifend, turpis vel laoreet euismod, lorem odio gravida justo, ac dapibus ipsum turpis eu diam. Mauris dignissim commodo dui, quis finibus est mollis a. Quisque ut placerat tellus, vitae lacinia turpis. Donec convallis odio quis neque dapibus, dapibus suscipit dolor dictum. leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ', body: '' },
-            { news_id: 2, title: 'Hello', summerized_article: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ', body: '' },
-            { news_id: 3, title: 'Hello', summerized_article: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ', body: '' },
-            { news_id: 4, title: 'Hello', summerized_article: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ', body: '' },
-            { news_id: 5, title: 'Hello', summerized_article: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ', body: '' },
-            { news_id: 1, title: 'Hello', summerized_article: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac diam vel leo gravida tincidunt. Nulla placerat sapien eros, sit amet commodo nisl accumsan ac. Nunc enim velit, ullamcorper ultrices efficitur id, eleifend a erat. Sed varius scelerisque sem quis facilisis. Praesent ac ultricies lorem. Nam pellentesque metus accumsan risus sagittis euismod. Integer ac tincidunt urna. Aliquam metus velit, tempus id varius molestie, consequat sed ex. Suspendisse sit amet facilisis urna. Suspendisse eget nisi vel quam ultricies scelerisque sed a augue. Fusce tincidunt sapien at diam sagittis tincidunt. Proin vitae eros id velit viverra varius a eget mi. Nam rhoncus erat eget luctus sodales. In hac habitasse platea dictumst.Etiam sed eros blandit, volutpat magna eget, tincidunt urna. Donec mattis vel ipsum in tristique. Phasellus laoreet rhoncus commodo. Curabitur porta, lectus non ultrices maximus, diam augue semper diam, quis aliquam ante sapien ac felis. Phasellus accumsan libero nisi, ut pharetra lectus iaculis maximus. Nullam facilisis suscipit porttitor. Suspendisse euismod vel justo nec mollis. Praesent enim massa, varius gravida ex id, congue pretium est. Aliquam et porttitor diam. Vivamus dapibus arcu vitae iaculis imperdiet. Vestibulum egestas facilisis hendrerit. Cras eleifend, turpis vel laoreet euismod, lorem odio gravida justo, ac dapibus ipsum turpis eu diam. Mauris dignissim commodo dui, quis finibus est mollis a. Quisque ut placerat tellus, vitae lacinia turpis. Donec convallis odio quis neque dapibus, dapibus suscipit dolor dictum. leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ', body: '' },
-            { news_id: 2, title: 'Hello', summerized_article: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ', body: '' },
-            { news_id: 3, title: 'Hello', summerized_article: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ', body: '' },
-            { news_id: 4, title: 'Hello', summerized_article: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ', body: '' },
-            { news_id: 5, title: 'Hello', summerized_article: ' leo ut imperdiet tincidunt. Proin vel dui tempor, gravida arcu ac, hendrerit neque. Phasellus non malesuada est. Sed id tristique enim, sed blandit nulla. ', body: '' },
-        ]
+        NewsList: []
     })
 
     useEffect(() => {
@@ -58,21 +48,63 @@ function CategoricalNews(props) {
                 break;
             case 'political':
                 setTopic('දේශපාලනික')
+                axios.get('http://localhost:8080/api/v1/categorical/Politics')
+                .then(response => {
+                    setNews({
+                        NewsList: response.data,
+                    })
+                    console.log(response.data)
+                })
                 break;
             case 'health':
                 setTopic('සෞක්‍ය')
+                axios.get('http://localhost:8080/api/v1/categorical/Health')
+                .then(response => {
+                    setNews({
+                        NewsList: response.data,
+                    })
+                    console.log(response.data)
+                })
                 break;
             case 'religious':
                 setTopic('ආගමික')
+                axios.get('http://localhost:8080/api/v1/categorical/Religious')
+                .then(response => {
+                    setNews({
+                        NewsList: response.data,
+                    })
+                    console.log(response.data)
+                })
                 break;
             case 'crime':
                 setTopic('අපරාධ')
+                axios.get('http://localhost:8080/api/v1/categorical/Crime')
+                .then(response => {
+                    setNews({
+                        NewsList: response.data,
+                    })
+                    console.log(response.data)
+                })
                 break;
             case 'others':
                 setTopic('වෙනත්')
+                axios.get('http://localhost:8080/api/v1/categorical/Others')
+                .then(response => {
+                    setNews({
+                        NewsList: response.data,
+                    })
+                    console.log(response.data)
+                })
                 break;
             case 'hotnews':
                 setTopic('උණුසුම් පුවත්')
+                axios.get('http://localhost:8080/api/v1/categorical/hotnews')
+                .then(response => {
+                    setNews({
+                        NewsList: response.data,
+                    })
+                    console.log(response.data)
+                })
                 break;
             default:
                 break;
@@ -90,15 +122,18 @@ function CategoricalNews(props) {
                     {
                         news.NewsList &&
                         news.NewsList.length > 0 &&
-                        news.NewsList.slice(state.minValue, state.maxValue).map(val => (
+                        news.NewsList.slice(state.minValue, state.maxValue).map(val =>
+                             (
                             <React.Fragment>
-                                <Col xs={24} sm={11} md={6} style={{ display: 'flex', justifyContent: 'center', padding: '20px 0px 20px 0px' }}>
-                                    <SecondaryNewsCard />
+                                <Col xs={24} sm={11} md={6} style={{ display: 'flex', justifyContent: 'center', padding: '20px 0px 20px 0px' }} key={val.news_id}>
+                                    <SecondaryNewsCard NewsData={val}/>
                                 </Col>
                                 <Col xs={24} sm={1} md={1} ></Col>
                             </React.Fragment>
-
-                        ))}
+                        ))
+                        
+                        
+                    }
                 </Row>
 
                 <Row align="middle" justify="center" style={{marginTop:'20px'}}>

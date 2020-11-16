@@ -5,7 +5,7 @@ import flag from '../../assets/flag.png'
 const { Meta } = Card;
 
 function MainNewsCard(props) {
-    console.log(props.newsData)
+    //console.log(props.newsData)
     return (
         <Card
             hoverable={true}

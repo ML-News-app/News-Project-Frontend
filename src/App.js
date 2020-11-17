@@ -7,6 +7,7 @@ import {
 import Home from './Components/Home/Home';
 import './App.css';
 import CategoricalNews from './Components/CategoricalNews/CategoricalNews';
+import SingleNewsPage from './Components/SingleNewsPage/SingleNewsPage';
 
 
 function App(props) {
@@ -16,6 +17,7 @@ function App(props) {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/category/:type" component={CategoricalNews} />
+        <Route exact path="/news" component={SingleNewsPage} />
       </Switch>
     </Router>
 

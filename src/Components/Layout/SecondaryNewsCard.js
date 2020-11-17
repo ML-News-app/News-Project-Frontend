@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Rate, Button,Popover } from 'antd';
+import { Card, Rate, Button, Popover } from 'antd';
+import {useHistory} from "react-router-dom";
 const { Meta } = Card;
 
+
 function SecondaryNewsCard(props) {
+
+  let history = useHistory();
 
   const [state, setstate] = useState({
     body: '',
@@ -17,6 +21,14 @@ function SecondaryNewsCard(props) {
       ...props.NewsData
     })
   }, [props.NewsData])
+
+  function goToSingleNewPage() {
+    history.push({
+      pathname: '/news',
+      state: { ...state }
+    })
+  }
+
   return (
     <Card
       hoverable
@@ -30,7 +42,7 @@ function SecondaryNewsCard(props) {
       actions={[
         <Rate value={3} />,
 
-        <Button danger type="text" >
+        <Button danger type="text"  onClick={goToSingleNewPage}>
           වැඩි විස්තර
                 </Button>,
       ]}

@@ -1,11 +1,22 @@
 import React from 'react'
 import { Card, Rate, Button, Popover } from 'antd';
 import flag from '../../assets/flag.png'
+import {useHistory} from "react-router-dom";
 
 const { Meta } = Card;
 
 function MainNewsCard(props) {
     //console.log(props.newsData)
+
+    let history = useHistory();
+
+    function goToSingleNewPage() {
+        history.push({
+          pathname: '/news',
+          state: { ...props.newsData }
+        })
+      }
+
     return (
         <Card
             hoverable={true}
@@ -23,7 +34,7 @@ function MainNewsCard(props) {
             actions={[
                 <Rate value={3} />,
 
-                <Button danger type="text" >
+                <Button danger type="text"  onClick={goToSingleNewPage}>
                     වැඩි විස්තර
                 </Button>,
 

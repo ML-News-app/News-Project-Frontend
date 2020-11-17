@@ -24,7 +24,7 @@ function SingleNewsPage(props) {
             <Content style={{ backgroundColor: 'white', display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
                 {
                     (state.title == '') ?
-                        <div style={{ width: '1000px', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '70vh' }}>
+                        <div style={{ width: '1000px', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '50vh' }}>
                             <Spin size="large" />
                         </div>
 

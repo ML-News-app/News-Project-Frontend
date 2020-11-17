@@ -36,15 +36,63 @@ function CategoricalNews(props) {
         switch (type) {
             case 'CricketNational':
                 setTopic('ක්‍රිකට් දේශීය ')
+                let tempNewsList=[];
+                axios.get('http://localhost:8080/api/v1/categorical/Sports')
+                .then(response => {
+                    response.data && response.data.map(i=>{
+                      if(i.subcategory01=="ක්‍රිකට්" && i.subcategory02==="දේශීය ක්‍රිකට්"){
+                        tempNewsList.push(i)
+                      }
+                    })
+                    setNews({
+                        NewsList: tempNewsList
+                    })
+                })
                 break;
             case 'CricketInternational':
                 setTopic('ක්‍රිකට් විදේශීය')
+                let tempNewsList1=[];
+                axios.get('http://localhost:8080/api/v1/categorical/Sports')
+                .then(response => {
+                    response.data && response.data.map(i=>{
+                      if(i.subcategory01=="ක්‍රිකට්" && i.subcategory02==="ජාත්‍යන්තර ක්‍රිකට්"){
+                        tempNewsList1.push(i)
+                      }
+                    })
+                    setNews({
+                        NewsList: tempNewsList1
+                    })
+                })
                 break;
             case 'Football':
                 setTopic('ෆූට්බෝල්')
+                let tempNewsList2=[];
+                axios.get('http://localhost:8080/api/v1/categorical/Sports')
+                .then(response => {
+                    response.data && response.data.map(i=>{
+                      if(i.subcategory01=="පාපන්දු"){
+                        tempNewsList2.push(i)
+                      }
+                    })
+                    setNews({
+                        NewsList: tempNewsList2
+                    })
+                })
                 break;
             case 'Rugby':
                 setTopic('රග්බි ')
+                let tempNewsList3=[];
+                axios.get('http://localhost:8080/api/v1/categorical/Sports')
+                .then(response => {
+                    response.data && response.data.map(i=>{
+                      if(i.subcategory01=="රග්බි"){
+                        tempNewsList3.push(i)
+                      }
+                    })
+                    setNews({
+                        NewsList: tempNewsList3
+                    })
+                })
                 break;
             case 'political':
                 setTopic('දේශපාලනික')
@@ -53,7 +101,7 @@ function CategoricalNews(props) {
                     setNews({
                         NewsList: response.data,
                     })
-                    console.log(response.data)
+                   // console.log(response.data)
                 })
                 break;
             case 'health':
@@ -63,7 +111,7 @@ function CategoricalNews(props) {
                     setNews({
                         NewsList: response.data,
                     })
-                    console.log(response.data)
+                   // console.log(response.data)
                 })
                 break;
             case 'religious':
@@ -73,7 +121,7 @@ function CategoricalNews(props) {
                     setNews({
                         NewsList: response.data,
                     })
-                    console.log(response.data)
+                    //console.log(response.data)
                 })
                 break;
             case 'crime':
@@ -83,7 +131,7 @@ function CategoricalNews(props) {
                     setNews({
                         NewsList: response.data,
                     })
-                    console.log(response.data)
+                   // console.log(response.data)
                 })
                 break;
             case 'others':
@@ -93,7 +141,7 @@ function CategoricalNews(props) {
                     setNews({
                         NewsList: response.data,
                     })
-                    console.log(response.data)
+                   // console.log(response.data)
                 })
                 break;
             case 'hotnews':
@@ -103,7 +151,7 @@ function CategoricalNews(props) {
                     setNews({
                         NewsList: response.data,
                     })
-                    console.log(response.data)
+                  //  console.log(response.data)
                 })
                 break;
             default:

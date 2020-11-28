@@ -36,8 +36,8 @@ function Navbar(props) {
 
     return (
         <div>
-            <Header style={{ backgroundColor: "white", height: "75px", display: 'flex', alignItems: "center", justifyContent: "space-between" }}>
-                <Title level={2}>News App</Title>
+            <Header style={{ background: "linear-gradient(180deg, #6A0000 0%, #FF0000 100%)", height: "75px", display: 'flex', alignItems: "center", justifyContent: "space-between" }}>
+                <Title level={2} style={{color: "white"}}>News App</Title>
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: "center", alignItems: "center" }}>
                     <Avatar size="large" icon="user" src={flag} shape="square" style={{ width: "80px", height: "40px", marginTop: '30px' }}/>
                     <Text type="secondary" style={{ marginTop: "-25px" }}>Nov 7,2020</Text>

@@ -4,6 +4,7 @@ import { Layout, Typography, Row, Col, Pagination, List, Spin, Card } from 'antd
 import { useParams } from "react-router-dom";
 import SecondaryNewsCard from '../Layout/SecondaryNewsCard';
 import axios from 'axios';
+import catImages from './images';
 const { Footer, Content } = Layout;
 const { Title } = Typography;
 
@@ -32,7 +33,6 @@ function CategoricalNews(props) {
     })
 
     useEffect(() => {
-
         switch (type) {
             case 'CricketNational':
                 setTopic('ක්‍රිකට් දේශීය ')
@@ -41,7 +41,10 @@ function CategoricalNews(props) {
                     .then(response => {
                         response.data && response.data.map(i => {
                             if (i.subcategory01 == "ක්‍රිකට්" && i.subcategory02 === "දේශීය ක්‍රිකට්") {
-                                tempNewsList.push(i)
+                                tempNewsList.push({
+                                    ...i,
+                                    img: catImages.CricketNational[Math.floor(Math.random() * (catImages.CricketNational.length))]
+                                })
                             }
                         })
                         setNews({
@@ -56,7 +59,10 @@ function CategoricalNews(props) {
                     .then(response => {
                         response.data && response.data.map(i => {
                             if (i.subcategory01 == "ක්‍රිකට්" && i.subcategory02 === "ජාත්‍යන්තර ක්‍රිකට්") {
-                                tempNewsList1.push(i)
+                                tempNewsList1.push({
+                                    ...i,
+                                    img: catImages.CricketInternational[Math.floor(Math.random() * (catImages.CricketInternational.length))]
+                                })
                             }
                         })
                         setNews({
@@ -71,7 +77,10 @@ function CategoricalNews(props) {
                     .then(response => {
                         response.data && response.data.map(i => {
                             if (i.subcategory01 == "පාපන්දු") {
-                                tempNewsList2.push(i)
+                                tempNewsList2.push({
+                                    ...i,
+                                    img: catImages.Football[Math.floor(Math.random() * (catImages.Football.length))]
+                                })
                             }
                         })
                         setNews({
@@ -86,7 +95,10 @@ function CategoricalNews(props) {
                     .then(response => {
                         response.data && response.data.map(i => {
                             if (i.subcategory01 == "රග්බි") {
-                                tempNewsList3.push(i)
+                                tempNewsList3.push({
+                                    ...i,
+                                    img: catImages.Rugby[Math.floor(Math.random() * (catImages.Rugby.length))]
+                                })
                             }
                         })
                         setNews({
@@ -96,60 +108,102 @@ function CategoricalNews(props) {
                 break;
             case 'political':
                 setTopic('දේශපාලනික')
+                let tempNewsList4 = [];
                 axios.get('http://localhost:8080/api/v1/categorical/Politics')
                     .then(response => {
+                        response.data && response.data.map(i => {
+                            tempNewsList4.push({
+                                ...i,
+                                img: catImages.political[Math.floor(Math.random() * (catImages.political.length))]
+                            })
+                        })
                         setNews({
-                            NewsList: response.data,
+                            NewsList: tempNewsList4,
                         })
                         // console.log(response.data)
                     })
                 break;
             case 'health':
                 setTopic('සෞක්‍ය')
+                let tempNewsList5 = [];
                 axios.get('http://localhost:8080/api/v1/categorical/Health')
                     .then(response => {
+                        response.data && response.data.map(i => {
+                            tempNewsList5.push({
+                                ...i,
+                                img: catImages.health[Math.floor(Math.random() * (catImages.health.length))]
+                            })
+                        })
                         setNews({
-                            NewsList: response.data,
+                            NewsList: tempNewsList5,
                         })
                         // console.log(response.data)
                     })
                 break;
             case 'religious':
                 setTopic('ආගමික')
+                let tempNewsList6 = [];
                 axios.get('http://localhost:8080/api/v1/categorical/Religious')
                     .then(response => {
+                        response.data && response.data.map(i => {
+                            tempNewsList6.push({
+                                ...i,
+                                img: catImages.religious[Math.floor(Math.random() * (catImages.religious.length))]
+                            })
+                        })
                         setNews({
-                            NewsList: response.data,
+                            NewsList: tempNewsList6,
                         })
                         //console.log(response.data)
                     })
                 break;
             case 'crime':
                 setTopic('අපරාධ')
+                let tempNewsList7 = [];
                 axios.get('http://localhost:8080/api/v1/categorical/Crime')
                     .then(response => {
+                        response.data && response.data.map(i => {
+                            tempNewsList7.push({
+                                ...i,
+                                img: catImages.crime[Math.floor(Math.random() * (catImages.crime.length))]
+                            })
+                        })
                         setNews({
-                            NewsList: response.data,
+                            NewsList: tempNewsList7,
                         })
                         // console.log(response.data)
                     })
                 break;
             case 'others':
                 setTopic('වෙනත්')
+                let tempNewsList8 = [];
                 axios.get('http://localhost:8080/api/v1/categorical/Others')
                     .then(response => {
+                        response.data && response.data.map(i => {
+                            tempNewsList8.push({
+                                ...i,
+                                img: catImages.others[Math.floor(Math.random() * (catImages.others.length))]
+                            })
+                        })
                         setNews({
-                            NewsList: response.data,
+                            NewsList: tempNewsList8,
                         })
                         // console.log(response.data)
                     })
                 break;
             case 'hotnews':
                 setTopic('උණුසුම් පුවත්')
+                let tempNewsList9 = [];
                 axios.get('http://localhost:8080/api/v1/categorical/hotnews')
                     .then(response => {
+                        response.data && response.data.map(i => {
+                            tempNewsList9.push({
+                                ...i,
+                                img: catImages.hotnews[Math.floor(Math.random() * (catImages.hotnews.length))]
+                            })
+                        })
                         setNews({
-                            NewsList: response.data,
+                            NewsList: tempNewsList9,
                         })
                         //  console.log(response.data)
                     })

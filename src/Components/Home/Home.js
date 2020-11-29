@@ -78,13 +78,8 @@ function Home(props) {
                 <Carousel responsive={responsive} autoPlay={true}>
                     {
                         state.HotNews && state.HotNews.map(i => {
-                            const maxLength=100
+                            const maxLength=250
                             let summary = i.summerized_article;
-                            /* if(i.summerized_article.length >= maxLength) {
-                                summary = i.summerized_article.substr(0,maxLength).concat('...')
-                            }else{
-                                summary = i.summerized_article
-                            } */
                             return <MainNewsCard key={i.id} summary={summary.substr(0,maxLength).concat('...')} newsData={i} />
                         })
                     }
@@ -93,13 +88,8 @@ function Home(props) {
                 <Carousel responsive={responsive} autoPlay={true} >
                 {
                         state.RecommendedNews && state.HotNews.map(i => {
-                            const maxLength=100
+                            const maxLength=250
                             let summary = i.summerized_article;
-                            /* if(i.summerized_article.length >= maxLength) {
-                                summary = i.summerized_article.substr(0,maxLength).concat('...')
-                            }else{
-                                summary = i.summerized_article
-                            } */
                             return <MainNewsCard key={i.id} summary={summary.substr(0,maxLength).concat('...')} newsData={i} />
                         })
                     }

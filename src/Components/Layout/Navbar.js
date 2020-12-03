@@ -94,7 +94,7 @@ function Navbar(props) {
     return (
         <div>
             <Header style={{ background: "linear-gradient(180deg, #6A0000 0%, #FF0000 100%)", height: "75px", display: 'flex', alignItems: "center", justifyContent: "space-between" }}>
-            <Avatar size="large" icon="user" src={logo} shape="square" style={{ width: "150px", height: "60px" }} />
+            <img size="large" src={logo} width='130' style={{borderRadius:'12px' }} />
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: "center", alignItems: "center" }}>
                     <Avatar size="large" icon="user" src={flag} shape="square" style={{ width: "80px", height: "40px", marginTop: '30px' }} />
                     <Text type="secondary" style={{ marginTop: "-20px", color: 'white' }}>{new Date().toISOString().slice(0, 10)}</Text>

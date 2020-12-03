@@ -28,7 +28,7 @@ function MainNewsCard(props) {
             cover={
                 <img
                     alt="example"
-                    src={flag}
+                    src={props.newsData.img || flag}
                     style={{ objectFit: 'cover', height: '150px' }}
                 />
             }

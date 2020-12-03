@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { HomeTwoTone } from '@ant-design/icons';
-import { Input, Layout, Menu, Avatar, Typography } from 'antd';
+import { Input, Layout, Menu, Avatar, Typography, AutoComplete } from 'antd';
 import flag from '../../assets/flag.png'
 import { useHistory, useLocation } from "react-router-dom";
+import axios from 'axios';
 const { SubMenu } = Menu;
 const { Header } = Layout;
-const { Search } = Input;
 const { Text, Title } = Typography;
 
 
@@ -17,6 +17,34 @@ function Navbar(props) {
     const [state, setState] = useState({
         current: 'mail'
     })
+
+    const [newData, setNewData] = useState({
+        newList: []
+    })
+
+    const [searchData, setSearchData] = useState({
+        newList: [],
+        selectedTitle:''
+    })
+
+    
+
+    useEffect(() => {
+        axios.get('http://localhost:8080/api/v1/testnews')
+            .then(response => {
+                setNewData({
+                    newList: response.data
+                })
+                console.log(response.data)
+            })
+    }, [])
+
+
+
+
+    const searchResult = () => {
+        return newData.newList
+    }
 
     const goToHome = () => {
         history.replace('/')
@@ -34,6 +62,34 @@ function Navbar(props) {
     };
     const { current } = state;
 
+    const handleSearch = (value) => {
+        const tempSearchList = []
+        newData.newList.map(i => {
+            if (i.title.includes(value)) {
+                tempSearchList.push({
+                    value: i.news_id,
+                    label: i.title,
+                })
+            }
+        })
+        setSearchData({
+            newList: tempSearchList
+        })
+    };
+
+    const onSelect = (value) => {
+        let tempselectedNews = newData.newList.filter(i=>i.news_id==value)
+        setSearchData({
+            ...searchData,
+            selectedTitle:tempselectedNews[0]['title']
+        })
+        history.push({
+            pathname: '/news',
+            state:  tempselectedNews[0] 
+          })
+    };
+
+
     return (
         <div>
             <Header style={{ background: "linear-gradient(180deg, #6A0000 0%, #FF0000 100%)", height: "75px", display: 'flex', alignItems: "center", justifyContent: "space-between" }}>
@@ -42,11 +98,23 @@ function Navbar(props) {
                     <Avatar size="large" icon="user" src={flag} shape="square" style={{ width: "80px", height: "40px", marginTop: '30px' }} />
                     <Text type="secondary" style={{ marginTop: "-20px", color: 'white' }}>{new Date().toISOString().slice(0, 10)}</Text>
                 </div>
-                <Search
+                {/* <Search
                     placeholder="සොයන්න"
                     onSearch={value => console.log(value)}
                     style={{ width: 200 }}
-                />
+                /> */}
+                <AutoComplete
+                    dropdownMatchSelectWidth={200}
+                    style={{ width: 200 }}
+                    options={searchData.newList.map(i => {
+                        return i
+                    })}
+                    value={searchData.selectedTitle}
+                    onSelect={onSelect}
+                    onSearch={handleSearch}
+                >
+                    <Input.Search size="large" placeholder="සොයන්න" />
+                </AutoComplete>
             </Header>
             <Header style={{ backgroundColor: "white", height: "70px", display: 'flex', justifyContent: 'start', alignItems: 'flex-end' }}>
                 <HomeTwoTone twoToneColor="red" style={{ marginBottom: "20px", fontSize: '30px', marginRight: '20px', marginLeft: '-20px' }} onClick={goToHome} />

@@ -74,7 +74,7 @@ function Home(props) {
             <Navbar />
 
             <Content style={{ backgroundColor: 'white' }}>
-                <Title style={{ margin: '20px 0px 20px 30px' }} level={5}>News Title</Title>
+                <Title style={{ margin: '20px 0px 20px 30px' }} level={5}>උණුසුම් පුවත්</Title>
                 <Carousel responsive={responsive} autoPlay={true}>
                     {
                         state.HotNews && state.HotNews.map(i => {
@@ -84,7 +84,7 @@ function Home(props) {
                         })
                     }
                 </Carousel>
-                <Title style={{ margin: '20px 0px 20px 30px' }} level={5}>News Title</Title>
+                <Title style={{ margin: '20px 0px 20px 30px' }} level={5}>නිර්දේශිත පුවත් </Title>
                 <Carousel responsive={responsive} autoPlay={true} >
                 {
                         state.RecommendedNews && state.HotNews.map(i => {

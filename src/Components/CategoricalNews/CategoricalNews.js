@@ -70,39 +70,75 @@ function CategoricalNews(props) {
                         })
                     })
                 break;
-            case 'Football':
-                setTopic('ෆූට්බෝල්')
-                let tempNewsList2 = [];
+            case 'FootballNational':
+                setTopic('පාපන්දු දේශීය ')
+                let tempNewsList20 = [];
                 axios.get('http://localhost:8080/api/v1/categorical/Sports')
                     .then(response => {
                         response.data && response.data.map(i => {
-                            if (i.subcategory01 == "පාපන්දු") {
-                                tempNewsList2.push({
+                            if (i.subcategory01 == "පාපන්දු" && i.subcategory02 === "දේශීය  පාපන්දු") {
+                                tempNewsList20.push({
                                     ...i,
-                                    img: catImages.Football[Math.floor(Math.random() * (catImages.Football.length))]
+                                    img: catImages.FootballNational[Math.floor(Math.random() * (catImages.FootballNational.length))]
                                 })
                             }
                         })
                         setNews({
-                            NewsList: tempNewsList2
+                            NewsList: tempNewsList20
                         })
                     })
                 break;
-            case 'Rugby':
-                setTopic('රග්බි ')
-                let tempNewsList3 = [];
+            case 'FootballInternational':
+                setTopic('පාපන්දු විදේශීය ')
+                let tempNewsList21 = [];
                 axios.get('http://localhost:8080/api/v1/categorical/Sports')
                     .then(response => {
                         response.data && response.data.map(i => {
-                            if (i.subcategory01 == "රග්බි") {
-                                tempNewsList3.push({
+                            if (i.subcategory01 == "පාපන්දු" && i.subcategory02 === "ජාත්‍යන්තර  පාපන්දු") {
+                                tempNewsList21.push({
                                     ...i,
-                                    img: catImages.Rugby[Math.floor(Math.random() * (catImages.Rugby.length))]
+                                    img: catImages.FootballInternational[Math.floor(Math.random() * (catImages.FootballInternational.length))]
                                 })
                             }
                         })
                         setNews({
-                            NewsList: tempNewsList3
+                            NewsList: tempNewsList21
+                        })
+                    })
+                break;
+            case 'RugbyNational':
+                setTopic('රග්බි දේශීය ')
+                let tempNewsList23 = [];
+                axios.get('http://localhost:8080/api/v1/categorical/Sports')
+                    .then(response => {
+                        response.data && response.data.map(i => {
+                            if (i.subcategory01 == "රග්බි" && i.subcategory02 === "දේශීය රග්බි") {
+                                tempNewsList23.push({
+                                    ...i,
+                                    img: catImages.RugbyNational[Math.floor(Math.random() * (catImages.RugbyNational.length))]
+                                })
+                            }
+                        })
+                        setNews({
+                            NewsList: tempNewsList23
+                        })
+                    })
+                break;
+            case 'RugbyNational':
+                setTopic('රග්බි විදේශීය ')
+                let tempNewsList24 = [];
+                axios.get('http://localhost:8080/api/v1/categorical/Sports')
+                    .then(response => {
+                        response.data && response.data.map(i => {
+                            if (i.subcategory01 == "රග්බි" && i.subcategory02 === "ජාත්‍යන්තර රග්බි") {
+                                tempNewsList24.push({
+                                    ...i,
+                                    img: catImages.RugbyInternational[Math.floor(Math.random() * (catImages.RugbyInternational.length))]
+                                })
+                            }
+                        })
+                        setNews({
+                            NewsList: tempNewsList24
                         })
                     })
                 break;

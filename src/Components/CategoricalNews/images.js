@@ -11,7 +11,17 @@ let CricketInternational = [
     `https://img.cricketworld.com/images/e-085234/ndia's-shreyas-iyer-celebrates.jpg`
 ]
 
-let Football = [
+
+let FootballNational = [
+    'https://www.sportinglife.com/images/news/630x354/3cd0cc91-ce24-414f-9ded-94ae435579a7.jpg',
+    'https://d3vlf99qeg6bpx.cloudfront.net/content/uploads/2020/11/28143307/gross-1.jpg',
+    'https://c.ndtvimg.com/2020-04/hhauvif8_tajikistan-football-afp_625x300_26_April_20.jpg',
+    'https://img.fifa.com/image/upload/t_s3/huiggmkn0de5oaqh3gm8.jpg',
+    'https://www2.pictures.zimbio.com/gi/Alexandre+Lacazette+Jeremy+Chopilin+FC+Metz+faZyS8skypzl.jpg',
+    'https://cdn.britannica.com/53/74853-004-4C4F7CA7/Ronaldo-Brazil-players-match-German-2002-World-2002.jpg'
+]
+
+let FootballInternational = [
     'https://www.sportinglife.com/images/news/630x354/3cd0cc91-ce24-414f-9ded-94ae435579a7.jpg',
     'https://d3vlf99qeg6bpx.cloudfront.net/content/uploads/2020/11/28143307/gross-1.jpg',
     'https://c.ndtvimg.com/2020-04/hhauvif8_tajikistan-football-afp_625x300_26_April_20.jpg',
@@ -21,6 +31,20 @@ let Football = [
 ]
 
 let Rugby = [
+    'https://static01.nyt.com/images/2019/09/19/multimedia/19sp-shorties-inyt-1/merlin_140085294_f9329d76-08c4-43c1-8030-9b76f786acdc-jumbo.jpg',
+    'https://www.talkingrugbyunion.co.uk/images/e-024078/ml20200202129.jpg',
+    'https://www.norvanreports.com/wp-content/uploads/2020/09/rugby.jpg',
+    'https://www.americasrugbynews.com/wp-content/uploads/2020/02/jaguares-lucas-paulos-hurricanes-2020.jpg',
+]
+
+let RugbyNational = [
+    'https://static01.nyt.com/images/2019/09/19/multimedia/19sp-shorties-inyt-1/merlin_140085294_f9329d76-08c4-43c1-8030-9b76f786acdc-jumbo.jpg',
+    'https://www.talkingrugbyunion.co.uk/images/e-024078/ml20200202129.jpg',
+    'https://www.norvanreports.com/wp-content/uploads/2020/09/rugby.jpg',
+    'https://www.americasrugbynews.com/wp-content/uploads/2020/02/jaguares-lucas-paulos-hurricanes-2020.jpg',
+]
+
+let RugbyInternational = [
     'https://static01.nyt.com/images/2019/09/19/multimedia/19sp-shorties-inyt-1/merlin_140085294_f9329d76-08c4-43c1-8030-9b76f786acdc-jumbo.jpg',
     'https://www.talkingrugbyunion.co.uk/images/e-024078/ml20200202129.jpg',
     'https://www.norvanreports.com/wp-content/uploads/2020/09/rugby.jpg',
@@ -54,8 +78,10 @@ module.exports = {
     CricketNational,
     CricketNational,
     CricketInternational,
-    Football,
-    Rugby,
+    FootballNational,
+    FootballInternational,
+    RugbyNational,
+    RugbyInternational,
     political,
     religious,
     crime,

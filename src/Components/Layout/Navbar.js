@@ -25,10 +25,10 @@ function Navbar(props) {
 
     const [searchData, setSearchData] = useState({
         newList: [],
-        selectedTitle:''
+        selectedTitle: ''
     })
 
-    
+
 
     useEffect(() => {
         axios.get('http://localhost:8080/api/v1/testnews')
@@ -79,22 +79,22 @@ function Navbar(props) {
     };
 
     const onSelect = (value) => {
-        let tempselectedNews = newData.newList.filter(i=>i.news_id==value)
+        let tempselectedNews = newData.newList.filter(i => i.news_id == value)
         setSearchData({
             ...searchData,
-            selectedTitle:tempselectedNews[0]['title']
+            selectedTitle: tempselectedNews[0]['title']
         })
         history.push({
             pathname: '/news',
-            state:  tempselectedNews[0] 
-          })
+            state: tempselectedNews[0]
+        })
     };
 
 
     return (
         <div>
             <Header style={{ background: "linear-gradient(180deg, #6A0000 0%, #FF0000 100%)", height: "75px", display: 'flex', alignItems: "center", justifyContent: "space-between" }}>
-            <img size="large" src={logo} width='130' style={{borderRadius:'12px' }} />
+                <img size="large" src={logo} width='130' style={{ borderRadius: '12px' }} />
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: "center", alignItems: "center" }}>
                     <Avatar size="large" icon="user" src={flag} shape="square" style={{ width: "80px", height: "40px", marginTop: '30px' }} />
                     <Text type="secondary" style={{ marginTop: "-20px", color: 'white' }}>{new Date().toISOString().slice(0, 10)}</Text>
@@ -131,8 +131,16 @@ function Navbar(props) {
                             <Menu.Item key="CricketInternational">විදේශීය </Menu.Item>
                         </Menu.ItemGroup>
 
-                        <Menu.Item key="Rugby">රග්බි </Menu.Item>
-                        <Menu.Item key="Football">ෆූට්බෝල් </Menu.Item>
+                       {/*  <Menu.Item key="Rugby">රග්බි </Menu.Item> */}
+                        <Menu.ItemGroup title="රග්බි">
+                            <Menu.Item key="RugbyNational">දේශීය </Menu.Item>
+                            <Menu.Item key="RugbyInternational">විදේශීය </Menu.Item>
+                        </Menu.ItemGroup>
+                       {/*  <Menu.Item key="Football">ෆූට්බෝල් </Menu.Item> */}
+                        <Menu.ItemGroup title="ෆූට්බෝල්">
+                            <Menu.Item key="FootballNational">දේශීය </Menu.Item>
+                            <Menu.Item key="FootballInternational">විදේශීය </Menu.Item>
+                        </Menu.ItemGroup>
 
                     </SubMenu>
                     <Menu.Item key="political" >

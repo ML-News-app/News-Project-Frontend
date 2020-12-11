@@ -119,7 +119,7 @@ function Navbar(props) {
             </Header>
             <Header style={{ backgroundColor: "white", height: "70px", display: 'flex', justifyContent: 'start', alignItems: 'flex-end' }}>
                 <HomeTwoTone twoToneColor="red" style={{ marginBottom: "20px", fontSize: '30px', marginRight: '20px', marginLeft: '-20px' }} onClick={goToHome} />
-                <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
+                <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" style={{fontWeight:'bold'}}>
                     <Menu.Item key="hotnews" >
                         උණුසුම් පුවත්
             </Menu.Item>
@@ -131,12 +131,12 @@ function Navbar(props) {
                             <Menu.Item key="CricketInternational">විදේශීය </Menu.Item>
                         </Menu.ItemGroup>
 
-                       {/*  <Menu.Item key="Rugby">රග්බි </Menu.Item> */}
+                        {/*  <Menu.Item key="Rugby">රග්බි </Menu.Item> */}
                         <Menu.ItemGroup title="රග්බි">
                             <Menu.Item key="RugbyNational">දේශීය </Menu.Item>
                             <Menu.Item key="RugbyInternational">විදේශීය </Menu.Item>
                         </Menu.ItemGroup>
-                       {/*  <Menu.Item key="Football">ෆූට්බෝල් </Menu.Item> */}
+                        {/*  <Menu.Item key="Football">ෆූට්බෝල් </Menu.Item> */}
                         <Menu.ItemGroup title="ෆූට්බෝල්">
                             <Menu.Item key="FootballNational">දේශීය </Menu.Item>
                             <Menu.Item key="FootballInternational">විදේශීය </Menu.Item>

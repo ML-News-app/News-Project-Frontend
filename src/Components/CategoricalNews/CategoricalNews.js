@@ -124,7 +124,7 @@ function CategoricalNews(props) {
                         })
                     })
                 break;
-            case 'RugbyNational':
+            case 'RugbyInternational':
                 setTopic('රග්බි විදේශීය ')
                 let tempNewsList24 = [];
                 axios.get('http://localhost:8080/api/v1/categorical/Sports')
@@ -285,7 +285,7 @@ function CategoricalNews(props) {
                     />
                 </Row>
             </Content>
-            <Footer style={{ backgroundColor: 'white' }}>Footer</Footer>
+            <Footer style={{ backgroundColor: 'white' }}></Footer>
         </Layout>
     )
 }

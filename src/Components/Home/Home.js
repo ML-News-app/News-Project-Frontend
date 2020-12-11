@@ -125,7 +125,7 @@ function Home(props) {
                         </div>
                 }
             </Content>
-            <Footer style={{ backgroundColor: 'white' }}>Footer</Footer>
+            <Footer style={{ backgroundColor: 'white' }}></Footer>
         </Layout>
     )
 }

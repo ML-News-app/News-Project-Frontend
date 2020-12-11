@@ -48,7 +48,7 @@ function SingleNewsPage(props) {
 
 
             </Content>
-            <Footer style={{ backgroundColor: 'white' }}>Footer</Footer>
+            <Footer style={{ backgroundColor: 'white' }}></Footer>
         </Layout>
     )
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from '../Layout/Navbar'
-import { Layout, Typography, Card, Divider, Spin } from 'antd';
+import { Layout, Typography, Card, Row, Spin,Rate } from 'antd';
 const { Footer, Content } = Layout;
 const { Title, Text } = Typography;
 
@@ -34,11 +34,18 @@ function SingleNewsPage(props) {
                             <Title style={{ margin: '20px 0px 20px 30px', marginTop: "30px", textAlign: 'center' }} level={3}>{state.title}</Title>
                             <Card style={{ width: '80%' }} bordered={false}>
                                 <Text>{state.body}</Text>
+                                <Row justify="end">
+                                    <Text type="secondary" style={{ marginTop: '10px', textAlign: 'end', fontSize: '10px', fontStyle: 'italic' }}>{state.date || new Date().toISOString().slice(0, 10)}</Text>
+                                </Row>
+                                <Row justify="center">
+                                    <Rate value={3} />
+                                </Row>
                             </Card>
                         </React.Fragment>
 
 
                 }
+
 
             </Content>
             <Footer style={{ backgroundColor: 'white' }}>Footer</Footer>

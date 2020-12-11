@@ -262,8 +262,8 @@ function CategoricalNews(props) {
                             news.NewsList.slice(state.minValue, state.maxValue).map(val =>
                                 (
                                     <React.Fragment>
-                                        <Col xs={24} sm={11} md={6} style={{ display: 'flex', justifyContent: 'center', padding: '20px 0px 20px 0px' }} key={val.news_id}>
-                                            <SecondaryNewsCard NewsData={val} />
+                                        <Col xs={24} sm={11} md={6} style={{ display: 'flex', justifyContent: 'center', padding: '20px 0px 20px 0px' }}>
+                                            <SecondaryNewsCard NewsData={val} key={val.news_id}/>
                                         </Col>
                                         <Col xs={24} sm={1} md={1} ></Col>
                                     </React.Fragment>

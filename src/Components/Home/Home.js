@@ -64,7 +64,7 @@ function Home(props) {
         switch (category) {
             case 'Sports':
                 if (subCategory === 'ක්‍රිකට්') return catImages.CricketInternational[Math.floor(Math.random() * (catImages.CricketInternational.length))]
-                else if (subCategory === 'ෆූට්බෝල්') return catImages.Football[Math.floor(Math.random() * (catImages.Football.length))]
+                else if (subCategory === 'පාපන්දු') return catImages.Football[Math.floor(Math.random() * (catImages.Football.length))]
                 else if (subCategory === 'රග්බි') return catImages.Rugby[Math.floor(Math.random() * (catImages.Rugby.length))]
             case 'Politics':
                 return catImages.political[Math.floor(Math.random() * (catImages.political.length))]

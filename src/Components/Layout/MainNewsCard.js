@@ -33,7 +33,7 @@ function MainNewsCard(props) {
                 />
             }
             actions={[
-                <Rate value={3} />,
+                <Rate value={3} disabled/>,
 
                 <Button danger type="text" onClick={goToSingleNewPage}>
                     වැඩි විස්තර
